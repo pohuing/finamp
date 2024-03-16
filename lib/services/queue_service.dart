@@ -7,6 +7,7 @@ import 'package:collection/collection.dart';
 import 'package:finamp/components/global_snackbar.dart';
 import 'package:finamp/models/finamp_models.dart';
 import 'package:finamp/models/jellyfin_models.dart' as jellyfin_models;
+import 'package:finamp/services/album_image_provider.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:get_it/get_it.dart';
 import 'package:hive_flutter/hive_flutter.dart';
@@ -839,12 +840,15 @@ class QueueService {
       _queueServiceLogger.warning("Couldn't get the offline image for track '${item.name}' because it's missing a blurhash");
     }
 
+    final imageUri = downloadedImage?.file?.uri ?? (
+      item.imageId != null ? _jellyfinApiHelper.getImageUrl(item: item) : (await getFallbackImageFile()).uri
+    );
+
     return MediaItem(
       id: uuid.v4(),
       album: item.album ?? "unknown",
       artist: item.artists?.join(", ") ?? item.albumArtist,
-      artUri: downloadedImage?.file?.uri ??
-          _jellyfinApiHelper.getImageUrl(item: item),
+      artUri: imageUri,
       title: item.name ?? "unknown",
       extras: {
         "itemJson": item.toJson(),

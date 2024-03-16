@@ -112,6 +112,7 @@ flutter:
     - images/finamp.png
     - images/finamp_cropped.png
     - images/jellyfin-icon-transparent.png
+    - images/placeholder-art.png
   #   - images/a_dot_ham.jpeg
 
   generate: true
