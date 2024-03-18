@@ -156,6 +156,8 @@ class BareAlbumImage extends ConsumerWidget {
       imageProviderCallback!(null);
     }
 
+    albumImageProviderLogger.warning("Album image missing without error! $image");
+
     return Builder(builder: placeholderBuilder);
   }
 }

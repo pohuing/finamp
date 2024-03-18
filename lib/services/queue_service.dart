@@ -841,8 +841,10 @@ class QueueService {
     }
 
     final imageUri = downloadedImage?.file?.uri ?? (
-      item.imageId != null ? _jellyfinApiHelper.getImageUrl(item: item) : (await getFallbackImageFile()).uri
+      _jellyfinApiHelper.getImageUrl(item: item) ?? (await getFallbackImageFile()).uri
     );
+
+    _queueServiceLogger.fine("imageUri: $imageUri\ndownloadedImage: ${downloadedImage?.file != null}\njellyfinUri: ${_jellyfinApiHelper.getImageUrl(item: item)}\nfallbackUri: ${(await getFallbackImageFile()).uri}\nitem.imageId: ${item.imageId}\nitem.imageTags: ${item.imageTags}");
 
     return MediaItem(
       id: uuid.v4(),
