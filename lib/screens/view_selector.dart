@@ -42,7 +42,7 @@ class _ViewSelectorState extends State<ViewSelector> {
           // libraries and thought Finamp was broken.
           if (snapshot.data!.isEmpty ||
               !snapshot.data!
-                  .any((element) => element.collectionType == "music")) {
+                  .any((element) => ["music", "musicvideos"].contains(element.collectionType?.toLowerCase()))) {
             return NoMusicLibrariesMessage(
               onRefresh: () {
                 setState(() {
@@ -89,7 +89,7 @@ class _ViewSelectorState extends State<ViewSelector> {
 
                   return CheckboxListTile(
                     value: isSelected,
-                    enabled: view.collectionType == "music",
+                    enabled: ["music", "musicvideos"].contains(view.collectionType?.toLowerCase()),
                     title: Text(_views.keys.elementAt(index).name ??
                         AppLocalizations.of(context)!.unknownName),
                     onChanged: (value) {

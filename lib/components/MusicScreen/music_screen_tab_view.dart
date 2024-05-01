@@ -87,7 +87,7 @@ class _MusicScreenTabViewState extends State<MusicScreenTabView>
         parentItem: widget.tabContentType.itemType == BaseItemDtoType.playlist
             ? null
             : widget.view,
-        includeItemTypes: widget.tabContentType.itemType.idString,
+        includeItemTypes: (widget.tabContentType.itemType == BaseItemDtoType.song && widget.view?.collectionType != "music") ? null : widget.tabContentType.itemType.idString,
 
         // If we're on the songs tab, sort by "Album,SortName". This is what the
         // Jellyfin web client does. If this isn't the case, sort by "SortName".
