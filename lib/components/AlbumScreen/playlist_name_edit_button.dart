@@ -15,6 +15,7 @@ class PlaylistNameEditButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return IconButton(
+      //FIXME this needs a label
       icon: const Icon(Icons.edit),
       tooltip: AppLocalizations.of(context)!.editPlaylistNameTooltip,
       onPressed: () => showDialog(

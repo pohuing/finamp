@@ -53,6 +53,7 @@ class DownloadButton extends ConsumerWidget {
     }
 
     var downloadButton = IconButton(
+      //FIXME this needs a label
       icon: status == DownloadItemStatus.notNeeded
           ? const Icon(Icons.file_download)
           : const Icon(Icons.lock), //TODO get better icon
@@ -78,6 +79,7 @@ class DownloadButton extends ConsumerWidget {
       tooltip: parentTooltip,
     );
     var deleteButton = IconButton(
+      //FIXME this needs a label
       icon: const Icon(Icons.delete),
       // If offline, we don't allow the user to delete items.
       // If we did, we'd have to implement listeners for MusicScreenTabView so that the user can't delete a parent, go back, and select the same parent.
@@ -109,6 +111,7 @@ class DownloadButton extends ConsumerWidget {
       },
     );
     var syncButton = IconButton(
+      //FIXME this needs a label
       icon: const Icon(Icons.sync),
       onPressed: () {
         downloadsService.resync(item, viewId);

@@ -33,6 +33,7 @@ class PlayerScreenAlbumImage extends ConsumerWidget {
           );
         }
 
+        //FIXME this needs a label
         return GestureDetector(
           onSecondaryTapDown: (_) async {
             var queueItem = snapshot.data!.currentTrack;

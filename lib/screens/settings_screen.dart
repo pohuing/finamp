@@ -32,6 +32,7 @@ class SettingsScreen extends StatelessWidget {
         title: Text(AppLocalizations.of(context)!.settings),
         actions: [
           IconButton(
+            //FIXME this needs a label
             icon: const Icon(Icons.info),
             onPressed: () async {
               final localizations = AppLocalizations.of(context)!;

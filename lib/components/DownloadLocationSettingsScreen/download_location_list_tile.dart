@@ -45,6 +45,7 @@ class DownloadLocationListTile extends ConsumerWidget {
           ),
           if (downloadLocation.baseDirectory.needsPath)
             IconButton(
+              //FIXME this needs a label
               icon: const Icon(Icons.delete),
               onPressed: () => showDialog(
                 context: context,

@@ -74,6 +74,7 @@ class QueueRestoreTile extends StatelessWidget {
                           info.songCount, remainingSongs))
                     ])),
         trailing: IconButton(
+            //FIXME this needs a label
             icon: const Icon(Icons.arrow_circle_right_outlined),
             onPressed: () async {
               await queueService.archiveSavedQueue();

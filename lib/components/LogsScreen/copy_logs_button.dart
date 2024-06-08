@@ -16,6 +16,7 @@ class _CopyLogsButtonState extends State<CopyLogsButton> {
   @override
   Widget build(BuildContext context) {
     return IconButton(
+      //FIXME this needs a label
       icon: const Icon(Icons.copy),
       onPressed: () async {
         final finampLogsHelper = GetIt.instance<FinampLogsHelper>();

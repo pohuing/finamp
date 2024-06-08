@@ -43,12 +43,14 @@ class _DownloadedItemsListState extends State<DownloadedItemsList> {
                           album.baseItemType == BaseItemDtoType.song)) &&
                       !FinampSettingsHelper.finampSettings.isOffline)
                     IconButton(
+                      //FIXME this needs a label
                       icon: const Icon(Icons.sync),
                       onPressed: () {
                         downloadsService.resync(album, null);
                       },
                     ),
                   IconButton(
+                    //FIXME this needs a label
                     icon: const Icon(Icons.delete),
                     onPressed: () => showDialog(
                       context: context,

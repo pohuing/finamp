@@ -178,6 +178,7 @@ class _QueueListItemState extends State<QueueListItem>
                         ),
                         if (FinampSettingsHelper.finampSettings.disableGesture)
                           IconButton(
+                            //FIXME this needs a label
                             padding: const EdgeInsets.only(left: 6.0),
                             visualDensity: VisualDensity.compact,
                             icon: const Icon(

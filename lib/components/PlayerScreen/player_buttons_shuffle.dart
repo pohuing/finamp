@@ -21,6 +21,7 @@ class PlayerButtonsShuffle extends StatelessWidget {
       stream: mediaStateStream,
       builder: (BuildContext context, AsyncSnapshot<dynamic> snapshot) {
         return IconButton(
+          //FIXME this needs a label
           onPressed: () async {
             FeedbackHelper.feedback(FeedbackType.light);
             _queueService.togglePlaybackOrder();

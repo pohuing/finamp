@@ -49,6 +49,7 @@ class _AddToPlaylistButtonState extends ConsumerState<AddToPlaylistButton> {
             .updateFavorite(!isFav);
       },
       child: IconButton(
+          //FIXME this needs a label
           icon: Icon(
             isFav ? Icons.favorite : Icons.favorite_outline,
             size: widget.size ?? 24.0,

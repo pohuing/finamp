@@ -33,6 +33,7 @@ class PlayerButtons extends StatelessWidget {
               if (controller.shouldShow(PlayerHideable.loopShuffleButtons))
                 PlayerButtonsRepeating(),
               IconButton(
+                //FIXME this needs a label
                 icon: const Icon(TablerIcons.player_skip_back),
                 onPressed: playbackState != null
                     ? () async {
@@ -69,6 +70,7 @@ class PlayerButtons extends StatelessWidget {
                     size: 28),
               ),
               IconButton(
+                //FIXME this needs a label
                 icon: const Icon(TablerIcons.player_skip_forward),
                 onPressed: playbackState != null
                     ? () async {
@@ -126,6 +128,7 @@ class _RoundedIconButton extends StatelessWidget {
   Widget build(BuildContext context) {
     final _borderRadius = borderRadius ?? BorderRadius.circular(height);
     final _icon = icon is Icon ? _addDropShadow(icon as Icon, context) : icon;
+    //FIXME this should return a button with a label, instead of relying on an inkwell
     return SizedBox(
       width: width,
       height: height,

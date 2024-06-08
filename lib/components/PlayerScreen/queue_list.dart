@@ -768,6 +768,7 @@ class _CurrentTrackState extends State<CurrentTrack> {
                               color: Color.fromRGBO(0, 0, 0, 0.3),
                             ),
                             child: IconButton(
+                              //FIXME this needs a label
                               onPressed: () {
                                 FeedbackHelper.feedback(FeedbackType.success);
                                 _audioHandler.togglePlayback();
@@ -957,6 +958,7 @@ class _CurrentTrackState extends State<CurrentTrack> {
                                     ),
                                   ),
                                   IconButton(
+                                      //FIXME this needs a label
                                       iconSize: 28,
                                       visualDensity:
                                           const VisualDensity(horizontal: -4),
@@ -1083,6 +1085,7 @@ class QueueSectionHeader extends StatelessWidget {
                 return Row(
                   children: [
                     IconButton(
+                        //FIXME this needs a label
                         padding: EdgeInsets.zero,
                         iconSize: 28.0,
                         icon: info?.order == FinampPlaybackOrder.shuffled
@@ -1108,6 +1111,7 @@ class QueueSectionHeader extends StatelessWidget {
                           // scrollToKey(key: nextUpHeaderKey, duration: const Duration(milliseconds: 1000));
                         }),
                     IconButton(
+                        //FIXME this needs a label
                         padding: EdgeInsets.zero,
                         iconSize: 28.0,
                         icon: info?.loop != FinampLoopMode.none

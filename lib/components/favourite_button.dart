@@ -59,7 +59,7 @@ class _FavoriteButtonState extends ConsumerState<FavoriteButton> {
         disabledColor:
             (widget.color ?? IconTheme.of(context).color)!.withOpacity(0.3),
         visualDensity: widget.visualDensity ?? VisualDensity.compact,
-        tooltip: AppLocalizations.of(context)!.favourite,
+        tooltip: AppLocalizations.of(context)!.favourite, //FIXME this needs a better label
         onPressed: isOffline
             ? null
             : () {

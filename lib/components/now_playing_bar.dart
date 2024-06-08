@@ -245,6 +245,7 @@ class NowPlayingBar extends ConsumerWidget {
                                           color: Color.fromRGBO(0, 0, 0, 0.3),
                                         ),
                                         child: IconButton(
+                                          //FIXME this needs a label
                                           onPressed: () {
                                             FeedbackHelper.feedback(
                                                 FeedbackType.light);

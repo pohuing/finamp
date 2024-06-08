@@ -263,6 +263,7 @@ class _MusicScreenState extends ConsumerState<MusicScreen>
                   : [
                       if (!Platform.isIOS && !Platform.isAndroid)
                         IconButton(
+                            //FIXME this needs a label
                             icon: const Icon(Icons.refresh),
                             onPressed: () {
                               refreshMap[sortedTabs
@@ -285,7 +286,7 @@ class _MusicScreenState extends ConsumerState<MusicScreen>
                                       !finampSettings.onlyShowFullyDownloaded)
                               : null,
                           tooltip: AppLocalizations.of(context)!
-                              .onlyShowFullyDownloaded,
+                              .onlyShowFullyDownloaded, //FIXME this needs a label
                         ),
                       if (!finampSettings.isOffline ||
                           finampSettings.trackOfflineFavorites)
@@ -296,7 +297,7 @@ class _MusicScreenState extends ConsumerState<MusicScreen>
                           onPressed: () =>
                               FinampSettingsHelper.setOnlyShowFavourite(
                                   !finampSettings.onlyShowFavourite),
-                          tooltip: AppLocalizations.of(context)!.favourites,
+                          tooltip: AppLocalizations.of(context)!.favourites, //FIXME this needs a label
                         ),
                       IconButton(
                         icon: const Icon(Icons.search),

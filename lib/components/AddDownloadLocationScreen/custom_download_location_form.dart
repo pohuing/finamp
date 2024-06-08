@@ -64,6 +64,7 @@ class _CustomDownloadLocationFormState
                               ),
                             ),
                             IconButton(
+                                //FIXME this needs a label
                                 icon: const Icon(Icons.folder),
                                 onPressed: () async {
                                   String? newPath = await FilePicker.platform
