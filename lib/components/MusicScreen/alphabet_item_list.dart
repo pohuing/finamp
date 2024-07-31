@@ -90,7 +90,7 @@ class _AlphabetListState extends State<AlphabetList> {
                 alphabet.length,
                 (x) => Container(
                   padding:
-                      const EdgeInsets.symmetric(horizontal: 10, vertical: 0),
+                      const EdgeInsets.only(right: 2.0),
                   height: _letterHeight,
                   child: FittedBox(
                     child: Text(
@@ -121,10 +121,8 @@ class _AlphabetListState extends State<AlphabetList> {
             // Disable default scrollbar
             ScrollConfiguration(
                 behavior: const FinampScrollBehavior(scrollbars: false),
-                child: MediaQuery(
-                  data: mediaQuery.copyWith(
-                      padding: mediaQuery.padding.copyWith(
-                          right: mediaQuery.padding.right + _letterHeight)),
+                child: Padding(
+                  padding: const EdgeInsets.only(right: 14.0),
                   child: widget.child,
                 )),
             if (_currentSelected != null && _displayPreview)
