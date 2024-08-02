@@ -555,7 +555,6 @@ class _TrackListItemState extends State<TrackListItem>
                   ),
                   AddToPlaylistButton(
                     item: baseItem,
-                    color: Colors.white,
                     size: 24,
                     visualDensity:
                         const VisualDensity(
