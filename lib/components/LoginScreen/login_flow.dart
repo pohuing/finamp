@@ -290,6 +290,7 @@ class JellyfinServerClientDiscovery {
               .finest("Received datagram: ${utf8.decode(datagram.data)}");
           final response = ClientDiscoveryResponse.fromJson(
               jsonDecode(utf8.decode(datagram.data)));
+          _clientDiscoveryLogger.fine("Received discovery response from ${datagram.address}:${datagram.port}: ${jsonEncode(response)}");
           onServerFound(response);
         }
       }

@@ -20,6 +20,7 @@ import 'package:finamp/services/keep_screen_on_helper.dart';
 import 'package:finamp/services/offline_listen_helper.dart';
 import 'package:finamp/services/playback_history_service.dart';
 import 'package:finamp/services/queue_service.dart';
+import 'package:finamp/services/server_discovery_emulation_service.dart';
 import 'package:finamp/services/theme_provider.dart';
 import 'package:audio_service/audio_service.dart';
 import 'package:audio_session/audio_session.dart';
@@ -340,6 +341,7 @@ Future<void> _setupPlaybackServices() async {
   await GetIt.instance<QueueService>().initializePlayer();
   GetIt.instance.registerSingleton(PlaybackHistoryService());
   GetIt.instance.registerSingleton(AudioServiceHelper());
+  GetIt.instance.registerSingleton(JellyfinServerDiscoveryEmulationService());
 }
 
 /// Migrates the old DownloadLocations list to a map

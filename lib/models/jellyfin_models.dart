@@ -3802,6 +3802,7 @@ class ClientDiscoveryResponse {
 
   factory ClientDiscoveryResponse.fromJson(Map<String, dynamic> json) =>
       _$ClientDiscoveryResponseFromJson(json);
+  Map<String, dynamic> toJson() => _$ClientDiscoveryResponseToJson(this);
 }
 
 /// LyricMetadata model.
