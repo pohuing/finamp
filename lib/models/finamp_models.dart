@@ -113,6 +113,7 @@ const _showStopButtonOnMediaNotificationDefault = false;
 const _showSeekControlsOnMediaNotificationDefault = true;
 const _keepScreenOnOption = KeepScreenOnOption.whileLyrics;
 const _keepScreenOnWhilePluggedIn = true;
+const _serverSharingEnabledDefault = false;
 
 @HiveType(typeId: 28)
 class FinampSettings {
@@ -193,7 +194,8 @@ class FinampSettings {
     this.showStopButtonOnMediaNotification = _showStopButtonOnMediaNotificationDefault,
     this.showSeekControlsOnMediaNotification = _showSeekControlsOnMediaNotificationDefault,
     this.keepScreenOnOption = _keepScreenOnOption,
-    this.keepScreenOnWhilePluggedIn = _keepScreenOnWhilePluggedIn
+    this.keepScreenOnWhilePluggedIn = _keepScreenOnWhilePluggedIn,
+    this.serverSharingEnabled = _serverSharingEnabledDefault,
   });
 
   @HiveField(0, defaultValue: _isOfflineDefault)
@@ -430,6 +432,9 @@ class FinampSettings {
 
   @HiveField(73, defaultValue: _keepScreenOnWhilePluggedIn)
   bool keepScreenOnWhilePluggedIn;
+
+  @HiveField(74, defaultValue: _serverSharingEnabledDefault)
+  bool serverSharingEnabled;
 
   static Future<FinampSettings> create() async {
     final downloadLocation = await DownloadLocation.create(

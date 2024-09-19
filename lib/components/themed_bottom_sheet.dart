@@ -22,7 +22,7 @@ typedef ScrollBuilder = Widget Function(double, List<Widget>);
 
 Future<void> showThemedBottomSheet({
   required BuildContext context,
-  required BaseItemDto item,
+  BaseItemDto? item,
   required String routeName,
   SliverBuilder? buildSlivers,
   WrapperBuilder? buildWrapper,
@@ -31,7 +31,7 @@ Future<void> showThemedBottomSheet({
   double minDraggableHeight = 0.6,
   bool showDragHandle = true,
 }) async {
-  if (usePlayerTheme) {
+  if (usePlayerTheme || item == null) {
     // Theme will be calculated later
   } else if (themeProvider == null) {
     if (item.blurHash != null) {
@@ -73,7 +73,7 @@ Future<void> showThemedBottomSheet({
           .withOpacity(0.9),
       builder: (BuildContext context) {
         return ThemedBottomSheet(
-          key: ValueKey(item.id + routeName),
+          key: ValueKey((item?.id ?? "") + routeName),
           item: item,
           usePlayerTheme: usePlayerTheme,
           themeProvider: themeProvider,
@@ -88,7 +88,7 @@ Future<void> showThemedBottomSheet({
 class ThemedBottomSheet extends ConsumerStatefulWidget {
   const ThemedBottomSheet({
     super.key,
-    required this.item,
+    this.item,
     required this.usePlayerTheme,
     required this.themeProvider,
     this.buildSlivers,
@@ -97,7 +97,7 @@ class ThemedBottomSheet extends ConsumerStatefulWidget {
     required this.showDragHandle,
   });
 
-  final BaseItemDto item;
+  final BaseItemDto? item;
   final bool usePlayerTheme;
   final FinampTheme? themeProvider;
   final SliverBuilder? buildSlivers;
@@ -134,18 +134,22 @@ class _ThemedBottomSheetState extends ConsumerState<ThemedBottomSheet> {
     assert(widget.buildSlivers != null || widget.buildWrapper != null);
     var brightness = ref.watch(brightnessProvider);
     if (_themeProvider == null) {
-      var image = ref.read(albumImageProvider(AlbumImageRequest(
-        item: widget.item,
-        maxWidth: 100,
-        maxHeight: 100,
-      )));
-      if (image != null) {
-        _themeProvider = FinampTheme.fromImage(
-            image, widget.item.blurHash, brightness,
-            useIsolate: false);
-      } else {
+      if (widget.item == null) {
         _themeProvider = FinampTheme.defaultTheme();
+      } else {
+        var image = ref.read(albumImageProvider(AlbumImageRequest(
+          item: widget.item!,
+          maxWidth: 100,
+          maxHeight: 100,
+        )));
+        if (image != null) {
+          _themeProvider = FinampTheme.fromImage(
+              image, widget.item!.blurHash, brightness,
+              useIsolate: false);
+        }
       }
+      // If we still don't have a theme, use the default
+      _themeProvider ??= FinampTheme.defaultTheme();
     }
     return ProviderScope(
       overrides: [

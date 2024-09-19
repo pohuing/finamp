@@ -1,3 +1,4 @@
+import 'package:finamp/components/server_sharing_panel.dart';
 import 'package:finamp/screens/playback_history_screen.dart';
 import 'package:finamp/screens/queue_restore_screen.dart';
 import 'package:flutter/material.dart';
@@ -96,6 +97,16 @@ class MusicScreenDrawer extends StatelessWidget {
                     mainAxisSize: MainAxisSize.min,
                     children: [
                       const Divider(),
+                      ListTile(
+                        leading: const Padding(
+                          padding: EdgeInsets.only(right: 16),
+                          child: Icon(TablerIcons.share),
+                        ),
+                        title: Text("Share Server"),
+                        onTap: () => showServerSharingPanel(
+                          context: context,
+                        ),
+                      ),
                       ListTile(
                         leading: const Padding(
                           padding: EdgeInsets.only(right: 16),
