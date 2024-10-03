@@ -111,86 +111,92 @@ const _lyricsFontSizeDefault = LyricsFontSize.medium;
 const _showLyricsScreenAlbumPreludeDefault = true;
 const _showStopButtonOnMediaNotificationDefault = false;
 const _showSeekControlsOnMediaNotificationDefault = true;
+const _keepScreenOnOption = KeepScreenOnOption.whileLyrics;
+const _keepScreenOnWhilePluggedIn = true;
 
 @HiveType(typeId: 28)
 class FinampSettings {
-  FinampSettings({
-    this.isOffline = _isOfflineDefault,
-    this.shouldTranscode = _shouldTranscodeDefault,
-    this.transcodeBitrate = _transcodeBitrateDefault,
-    // downloadLocations is required since the other values can be created with
-    // default values. create() is used to return a FinampSettings with
-    // downloadLocations.
-    required this.downloadLocations,
-    this.androidStopForegroundOnPause = _androidStopForegroundOnPauseDefault,
-    required this.showTabs,
-    this.onlyShowFavourite = _isFavouriteDefault,
-    this.sortBy = SortBy.sortName,
-    this.sortOrder = SortOrder.ascending,
-    this.songShuffleItemCount = _songShuffleItemCountDefault,
-    this.volumeNormalizationActive = _volumeNormalizationActiveDefault,
-    this.volumeNormalizationIOSBaseGain =
-        _volumeNormalizationIOSBaseGainDefault,
-    this.volumeNormalizationMode = _volumeNormalizationModeDefault,
-    this.contentViewType = _contentViewType,
-    this.playbackSpeedVisibility = _playbackSpeedVisibility,
-    this.contentGridViewCrossAxisCountPortrait =
-        _contentGridViewCrossAxisCountPortrait,
-    this.contentGridViewCrossAxisCountLandscape =
-        _contentGridViewCrossAxisCountLandscape,
-    this.showTextOnGridView = _showTextOnGridView,
-    this.sleepTimerSeconds = _sleepTimerSeconds,
-    required this.downloadLocationsMap,
-    this.useCoverAsBackground = _useCoverAsBackground,
-    this.playerScreenCoverMinimumPadding = _playerScreenCoverMinimumPadding,
-    this.hideSongArtistsIfSameAsAlbumArtists =
-        _hideSongArtistsIfSameAsAlbumArtists,
-    this.showArtistsTopSongs = _showArtistsTopSongs,
-    this.bufferDurationSeconds = _bufferDurationSeconds,
-    required this.tabSortBy,
-    required this.tabSortOrder,
-    this.loopMode = _defaultLoopMode,
-    this.playbackSpeed = _defaultPlaybackSpeed,
-    this.tabOrder = _tabOrder,
-    this.autoloadLastQueueOnStartup = _autoLoadLastQueueOnStartup,
-    this.hasCompletedBlurhashImageMigration = true,
-    this.hasCompletedBlurhashImageMigrationIdFix = true,
-    this.hasCompleteddownloadsServiceMigration = true,
-    this.requireWifiForDownloads = false,
-    this.onlyShowFullyDownloaded = false,
-    this.showDownloadsWithUnknownLibrary = true,
-    this.maxConcurrentDownloads = 10,
-    this.downloadWorkers = 5,
-    this.resyncOnStartup = _defaultResyncOnStartup,
-    this.preferQuickSyncs = true,
-    this.hasCompletedIsarUserMigration = true,
-    this.downloadTranscodingCodec,
-    this.downloadTranscodeBitrate,
-    this.shouldTranscodeDownloads = _shouldTranscodeDownloadsDefault,
-    this.shouldRedownloadTranscodes = _shouldRedownloadTranscodesDefault,
-    this.swipeInsertQueueNext = _swipeInsertQueueNext,
-    this.useFixedSizeGridTiles = false,
-    this.fixedGridTileSize = _fixedGridTileSizeDefault,
-    this.allowSplitScreen = true,
-    this.splitScreenPlayerWidth = _defaultSplitScreenPlayerWidth,
-    this.enableVibration = _enableVibration,
-    this.prioritizeCoverFactor = _prioritizeCoverFactor,
-    this.suppressPlayerPadding = _suppressPlayerPadding,
-    this.hidePlayerBottomActions = _hidePlayerBottomActions,
-    this.reportQueueToServer = _reportQueueToServerDefault,
-    this.periodicPlaybackSessionUpdateFrequencySeconds =
-        _periodicPlaybackSessionUpdateFrequencySecondsDefault,
-    this.showArtistChipImage = _showArtistChipImage,
-    this.trackOfflineFavorites = _trackOfflineFavoritesDefault,
-    this.showProgressOnNowPlayingBar = _showProgressOnNowPlayingBarDefault,
-    this.startInstantMixForIndividualTracks = _startInstantMixForIndividualTracksDefault,
-    this.showLyricsTimestamps = _showLyricsTimestampsDefault,
-    this.lyricsAlignment = _lyricsAlignmentDefault,
-    this.lyricsFontSize = _lyricsFontSizeDefault,
-    this.showLyricsScreenAlbumPrelude = _showLyricsScreenAlbumPreludeDefault,
-    this.showStopButtonOnMediaNotification = _showStopButtonOnMediaNotificationDefault,
-    this.showSeekControlsOnMediaNotification = _showSeekControlsOnMediaNotificationDefault,
-  });
+  FinampSettings(
+      {this.isOffline = _isOfflineDefault,
+      this.shouldTranscode = _shouldTranscodeDefault,
+      this.transcodeBitrate = _transcodeBitrateDefault,
+      // downloadLocations is required since the other values can be created with
+      // default values. create() is used to return a FinampSettings with
+      // downloadLocations.
+      required this.downloadLocations,
+      this.androidStopForegroundOnPause = _androidStopForegroundOnPauseDefault,
+      required this.showTabs,
+      this.onlyShowFavourite = _isFavouriteDefault,
+      this.sortBy = SortBy.sortName,
+      this.sortOrder = SortOrder.ascending,
+      this.songShuffleItemCount = _songShuffleItemCountDefault,
+      this.volumeNormalizationActive = _volumeNormalizationActiveDefault,
+      this.volumeNormalizationIOSBaseGain =
+          _volumeNormalizationIOSBaseGainDefault,
+      this.volumeNormalizationMode = _volumeNormalizationModeDefault,
+      this.contentViewType = _contentViewType,
+      this.playbackSpeedVisibility = _playbackSpeedVisibility,
+      this.contentGridViewCrossAxisCountPortrait =
+          _contentGridViewCrossAxisCountPortrait,
+      this.contentGridViewCrossAxisCountLandscape =
+          _contentGridViewCrossAxisCountLandscape,
+      this.showTextOnGridView = _showTextOnGridView,
+      this.sleepTimerSeconds = _sleepTimerSeconds,
+      required this.downloadLocationsMap,
+      this.useCoverAsBackground = _useCoverAsBackground,
+      this.playerScreenCoverMinimumPadding = _playerScreenCoverMinimumPadding,
+      this.hideSongArtistsIfSameAsAlbumArtists =
+          _hideSongArtistsIfSameAsAlbumArtists,
+      this.showArtistsTopSongs = _showArtistsTopSongs,
+      this.bufferDurationSeconds = _bufferDurationSeconds,
+      required this.tabSortBy,
+      required this.tabSortOrder,
+      this.loopMode = _defaultLoopMode,
+      this.playbackSpeed = _defaultPlaybackSpeed,
+      this.tabOrder = _tabOrder,
+      this.autoloadLastQueueOnStartup = _autoLoadLastQueueOnStartup,
+      this.hasCompletedBlurhashImageMigration = true,
+      this.hasCompletedBlurhashImageMigrationIdFix = true,
+      this.hasCompleteddownloadsServiceMigration = true,
+      this.requireWifiForDownloads = false,
+      this.onlyShowFullyDownloaded = false,
+      this.showDownloadsWithUnknownLibrary = true,
+      this.maxConcurrentDownloads = 10,
+      this.downloadWorkers = 5,
+      this.resyncOnStartup = _defaultResyncOnStartup,
+      this.preferQuickSyncs = true,
+      this.hasCompletedIsarUserMigration = true,
+      this.downloadTranscodingCodec,
+      this.downloadTranscodeBitrate,
+      this.shouldTranscodeDownloads = _shouldTranscodeDownloadsDefault,
+      this.shouldRedownloadTranscodes = _shouldRedownloadTranscodesDefault,
+      this.swipeInsertQueueNext = _swipeInsertQueueNext,
+      this.useFixedSizeGridTiles = false,
+      this.fixedGridTileSize = _fixedGridTileSizeDefault,
+      this.allowSplitScreen = true,
+      this.splitScreenPlayerWidth = _defaultSplitScreenPlayerWidth,
+      this.enableVibration = _enableVibration,
+      this.prioritizeCoverFactor = _prioritizeCoverFactor,
+      this.suppressPlayerPadding = _suppressPlayerPadding,
+      this.hidePlayerBottomActions = _hidePlayerBottomActions,
+      this.reportQueueToServer = _reportQueueToServerDefault,
+      this.periodicPlaybackSessionUpdateFrequencySeconds =
+          _periodicPlaybackSessionUpdateFrequencySecondsDefault,
+      this.showArtistChipImage = _showArtistChipImage,
+      this.trackOfflineFavorites = _trackOfflineFavoritesDefault,
+      this.showProgressOnNowPlayingBar = _showProgressOnNowPlayingBarDefault,
+      this.startInstantMixForIndividualTracks =
+          _startInstantMixForIndividualTracksDefault,
+      this.showLyricsTimestamps = _showLyricsTimestampsDefault,
+      this.lyricsAlignment = _lyricsAlignmentDefault,
+      this.lyricsFontSize = _lyricsFontSizeDefault,
+      this.showLyricsScreenAlbumPrelude = _showLyricsScreenAlbumPreludeDefault,
+      this.showStopButtonOnMediaNotification =
+          _showStopButtonOnMediaNotificationDefault,
+      this.showSeekControlsOnMediaNotification =
+          _showSeekControlsOnMediaNotificationDefault,
+      this.keepScreenOnOption = _keepScreenOnOption,
+      this.keepScreenOnWhilePluggedIn = _keepScreenOnWhilePluggedIn});
 
   @HiveField(0, defaultValue: _isOfflineDefault)
   bool isOffline;
@@ -421,6 +427,12 @@ class FinampSettings {
   @HiveField(71, defaultValue: _showLyricsScreenAlbumPreludeDefault)
   bool showLyricsScreenAlbumPrelude;
 
+  @HiveField(72, defaultValue: _keepScreenOnOption)
+  KeepScreenOnOption keepScreenOnOption;
+
+  @HiveField(73, defaultValue: _keepScreenOnWhilePluggedIn)
+  bool keepScreenOnWhilePluggedIn;
+
   static Future<FinampSettings> create() async {
     final downloadLocation = await DownloadLocation.create(
       name: "Internal Storage",
@@ -469,7 +481,6 @@ class FinampSettings {
   SortOrder getSortOrder(TabContentType tabType) {
     return tabSortOrder[tabType] ?? SortOrder.ascending;
   }
-
 }
 
 enum CustomPlaybackActions {
@@ -672,7 +683,6 @@ enum TabContentType {
         throw const FormatException("Unsupported itemType");
     }
   }
-
 }
 
 @HiveType(typeId: 39)
@@ -2064,7 +2074,6 @@ enum MediaItemParentType {
 @JsonSerializable()
 @HiveType(typeId: 69)
 class MediaItemId {
-
   MediaItemId({
     required this.contentType,
     required this.parentType,
@@ -2079,7 +2088,7 @@ class MediaItemId {
   MediaItemParentType parentType;
 
   @HiveField(2)
-  String? itemId;  
+  String? itemId;
 
   @HiveField(3)
   String? parentId;
@@ -2093,7 +2102,6 @@ class MediaItemId {
   String toString() {
     return jsonEncode(toJson());
   }
-
 }
 
 @HiveType(typeId: 70)
@@ -2174,6 +2182,55 @@ enum LyricsFontSize {
         return AppLocalizations.of(context)!.fontSizeOptionMedium;
       case LyricsFontSize.large:
         return AppLocalizations.of(context)!.fontSizeOptionLarge;
+    }
+  }
+}
+
+@HiveType(typeId: 72)
+enum KeepScreenOnOption {
+  @HiveField(0)
+  disabled,
+  @HiveField(1)
+  alwaysOn,
+  @HiveField(2)
+  whilePlaying,
+  @HiveField(3)
+  whileLyrics;
+
+  /// Human-readable version of this enum. I've written longer descriptions on
+  /// enums like [TabContentType], and I can't be bothered to copy and paste it
+  /// again.
+  @override
+  @Deprecated("Use toLocalisedString when possible")
+  String toString() => _humanReadableName(this);
+
+  String toLocalisedString(BuildContext context) =>
+      _humanReadableLocalisedName(this, context);
+
+  String _humanReadableName(KeepScreenOnOption keepScreenOnOption) {
+    switch (keepScreenOnOption) {
+      case KeepScreenOnOption.disabled:
+        return "Disabled";
+      case KeepScreenOnOption.alwaysOn:
+        return "Always On";
+      case KeepScreenOnOption.whilePlaying:
+        return "While Playing Music";
+      case KeepScreenOnOption.whileLyrics:
+        return "While Showing Lyrics";
+    }
+  }
+
+  String _humanReadableLocalisedName(
+      KeepScreenOnOption keepScreenOnOption, BuildContext context) {
+    switch (keepScreenOnOption) {
+      case KeepScreenOnOption.disabled:
+        return AppLocalizations.of(context)!.keepScreenOnDisabled;
+      case KeepScreenOnOption.alwaysOn:
+        return AppLocalizations.of(context)!.keepScreenOnAlwaysOn;
+      case KeepScreenOnOption.whilePlaying:
+        return AppLocalizations.of(context)!.keepScreenOnWhilePlaying;
+      case KeepScreenOnOption.whileLyrics:
+        return AppLocalizations.of(context)!.keepScreenOnWhileLyrics;
     }
   }
 }

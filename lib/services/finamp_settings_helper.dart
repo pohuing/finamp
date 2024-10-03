@@ -325,7 +325,8 @@ class FinampSettingsHelper {
   static void resetCustomizationSettings() {
     FinampSettings finampSettingsTemp = finampSettings;
     //TODO refactor this so default settings are available here
-    finampSettingsTemp.playbackSpeedVisibility = PlaybackSpeedVisibility.automatic;
+    finampSettingsTemp.playbackSpeedVisibility =
+        PlaybackSpeedVisibility.automatic;
     finampSettingsTemp.showStopButtonOnMediaNotification = false;
     finampSettingsTemp.showSeekControlsOnMediaNotification = true;
     Hive.box<FinampSettings>("FinampSettings")
@@ -358,6 +359,20 @@ class FinampSettingsHelper {
     FinampSettings finampSettingsTemp = finampSettings;
     finampSettingsTemp.periodicPlaybackSessionUpdateFrequencySeconds =
         periodicPlaybackSessionUpdateFrequencySeconds;
+    Hive.box<FinampSettings>("FinampSettings")
+        .put("FinampSettings", finampSettingsTemp);
+  }
+
+  static void setKeepScreenOnOption(KeepScreenOnOption keepScreenOnOption) {
+    FinampSettings finampSettingsTemp = finampSettings;
+    finampSettingsTemp.keepScreenOnOption = keepScreenOnOption;
+    Hive.box<FinampSettings>("FinampSettings")
+        .put("FinampSettings", finampSettingsTemp);
+  }
+
+  static void setKeepScreenOnWhileCharging(bool keepScreenOnWhileCharging) {
+    FinampSettings finampSettingsTemp = finampSettings;
+    finampSettingsTemp.keepScreenOnWhilePluggedIn = keepScreenOnWhileCharging;
     Hive.box<FinampSettings>("FinampSettings")
         .put("FinampSettings", finampSettingsTemp);
   }
