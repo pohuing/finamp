@@ -73,7 +73,7 @@ class _AlbumChipContent extends StatelessWidget {
 
     return Semantics.fromProperties(
       properties: SemanticsProperties(
-        label: "$albumName (Album)",
+        label: "$albumName (${AppLocalizations.of(context)!.album})",
         button: true,
       ),
       excludeSemantics: true,
@@ -88,8 +88,8 @@ class _AlbumChipContent extends StatelessWidget {
                   (album) => Navigator.of(context).pushNamed(
                       AlbumScreen.routeName,
                       arguments: album!.baseItem!))
-              : () => jellyfinApiHelper.getItemById(item.albumId!).then((album) =>
-                  Navigator.of(context)
+              : () => jellyfinApiHelper.getItemById(item.albumId!).then(
+                  (album) => Navigator.of(context)
                       .pushNamed(AlbumScreen.routeName, arguments: album)),
           child: Padding(
             padding: const EdgeInsets.symmetric(vertical: 2, horizontal: 4),

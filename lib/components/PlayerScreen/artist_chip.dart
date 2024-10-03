@@ -106,7 +106,8 @@ class ArtistChip extends ConsumerWidget {
     final BaseItemDto? localArtist;
     if (artist != null &&
         FinampSettingsHelper.finampSettings.showArtistChipImage) {
-      localArtist = ref.watch(artistItemProvider(artist!.id)).valueOrNull ?? artist;
+      localArtist =
+          ref.watch(artistItemProvider(artist!.id)).valueOrNull ?? artist;
     } else {
       localArtist = artist;
     }
@@ -141,7 +142,7 @@ class _ArtistChipContent extends StatelessWidget {
 
     return Semantics.fromProperties(
       properties: SemanticsProperties(
-        label: "$name (Artist)",
+        label: "$name (${AppLocalizations.of(context)!.artist})",
         button: true,
       ),
       container: true,

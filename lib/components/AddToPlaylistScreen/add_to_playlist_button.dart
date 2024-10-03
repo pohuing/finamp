@@ -45,7 +45,7 @@ class _AddToPlaylistButtonState extends ConsumerState<AddToPlaylistButton> {
     return Semantics.fromProperties(
       properties: SemanticsProperties(
         label: AppLocalizations.of(context)!.addToPlaylistTooltip,
-        hint: "Tap to add to playlist. Long press to toggle favorite.",
+        hint: AppLocalizations.of(context)!.playlistActionsMenuButtonTooltip,
         button: true,
       ),
       excludeSemantics: true,
@@ -72,12 +72,13 @@ class _AddToPlaylistButtonState extends ConsumerState<AddToPlaylistButton> {
                 return GlobalSnackbar.message((context) =>
                     AppLocalizations.of(context)!.notAvailableInOfflineMode);
               }
-      
+
               bool inPlaylist = queueItemInPlaylist(widget.queueItem);
               await showPlaylistActionsMenu(
                 context: context,
                 item: widget.item!,
-                parentPlaylist: inPlaylist ? widget.queueItem!.source.item : null,
+                parentPlaylist:
+                    inPlaylist ? widget.queueItem!.source.item : null,
                 usePlayerTheme: true,
               );
             }),

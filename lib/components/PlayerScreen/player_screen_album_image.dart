@@ -9,6 +9,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_vibrate/flutter_vibrate.dart';
 import 'package:get_it/get_it.dart';
 import 'package:simple_gesture_detector/simple_gesture_detector.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 import '../../services/current_album_image_provider.dart';
 import '../../services/favorite_provider.dart';
@@ -35,8 +36,11 @@ class PlayerScreenAlbumImage extends ConsumerWidget {
         final currentTrack = snapshot.data!.currentTrack;
 
         return Semantics(
-          label: "Artwork for ${currentTrack?.item.title}. Tap to toggle playback. Swipe left or right to switch tracks.",
-          excludeSemantics: true, // replace child semantics with custom semantics
+          label: AppLocalizations.of(context)!.playerAlbumArtworkTooltip(
+              currentTrack?.item.title ??
+                  AppLocalizations.of(context)!.unknownName),
+          excludeSemantics:
+              true, // replace child semantics with custom semantics
           container: true,
           child: GestureDetector(
             onSecondaryTapDown: (_) async {
@@ -57,7 +61,8 @@ class PlayerScreenAlbumImage extends ConsumerWidget {
             child: SimpleGestureDetector(
               //TODO replace with PageView, this is just a placeholder
               onTap: () {
-                final audioService = GetIt.instance<MusicPlayerBackgroundTask>();
+                final audioService =
+                    GetIt.instance<MusicPlayerBackgroundTask>();
                 audioService.togglePlayback();
                 FeedbackHelper.feedback(FeedbackType.selection);
               },

@@ -86,8 +86,8 @@ class _AlphabetListState extends State<AlphabetList> {
           onPointerUp: (x) => updateSelected(x.localPosition, Drag.end),
           behavior: HitTestBehavior.opaque,
           child: Semantics(
-            label: 'Alphabet list for fast scrolling',
-            excludeSemantics: true, // replace child semantics with custom semantics
+            excludeSemantics:
+                true, // replace child semantics with custom semantics
             child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: List.generate(
@@ -133,16 +133,16 @@ class _AlphabetListState extends State<AlphabetList> {
                   child: widget.child,
                 )),
             if (_currentSelected != null && _displayPreview)
-              FocusOnIt(
-                onUnfocus: () {
-                  setState(() {
-                    _currentSelected = null;
-                    _displayPreview = false;
-                  });
-                },
-                child: Positioned(
-                  left: 20,
-                  top: 20,
+              Positioned(
+                left: 20,
+                top: 20,
+                child: FocusOnIt(
+                  onUnfocus: () {
+                    setState(() {
+                      _currentSelected = null;
+                      _displayPreview = false;
+                    });
+                  },
                   child: GestureDetector(
                     onTap: () {
                       setState(() {

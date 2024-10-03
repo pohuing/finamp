@@ -281,12 +281,12 @@ class _SongListTileState extends ConsumerState<SongListTile>
                   List<DownloadStub> offlineItems;
                   // If we're on the songs tab, just get all of the downloaded items
                   offlineItems = await downloadsService.getAllSongs(
-                      // nameFilter: widget.searchTerm,
-                      viewFilter: finampUserHelper.currentUser?.currentView?.id,
-                      nullableViewFilters:
-                          settings.showDownloadsWithUnknownLibrary,
-                      onlyFavorites:
-                          settings.onlyShowFavourite && settings.trackOfflineFavorites,
+                    // nameFilter: widget.searchTerm,
+                    viewFilter: finampUserHelper.currentUser?.currentView?.id,
+                    nullableViewFilters:
+                        settings.showDownloadsWithUnknownLibrary,
+                    onlyFavorites: settings.onlyShowFavourite &&
+                        settings.trackOfflineFavorites,
                   );
 
                   var items = offlineItems
@@ -306,8 +306,12 @@ class _SongListTileState extends ConsumerState<SongListTile>
                             (element) => element.id == widget.item.id)
                         : await widget.index,
                     source: QueueItemSource(
-                      name: const QueueItemSourceName(
-                          type: QueueItemSourceNameType.mix),
+                      name: QueueItemSourceName(
+                        type: widget.item.name != null
+                            ? QueueItemSourceNameType.mix
+                            : QueueItemSourceNameType.instantMix,
+                        localizationParameter: widget.item.name ?? "",
+                      ),
                       type: QueueItemSourceType.allSongs,
                       id: widget.item.id,
                     ),
