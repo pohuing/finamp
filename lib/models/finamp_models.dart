@@ -197,7 +197,9 @@ class FinampSettings {
       this.showSeekControlsOnMediaNotification =
           _showSeekControlsOnMediaNotificationDefault,
       this.keepScreenOnOption = _keepScreenOnOption,
-      this.keepScreenOnWhilePluggedIn = _keepScreenOnWhilePluggedIn});
+      this.keepScreenOnWhilePluggedIn = _keepScreenOnWhilePluggedIn,
+      this.serverSharingEnabled = _serverSharingEnabledDefault,
+      });
 
   @HiveField(0, defaultValue: _isOfflineDefault)
   bool isOffline;
