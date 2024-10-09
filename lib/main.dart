@@ -71,6 +71,7 @@ import 'services/jellyfin_api_helper.dart';
 import 'services/locale_helper.dart';
 import 'services/music_player_background_task.dart';
 import 'services/theme_mode_helper.dart';
+import 'services/ui_overlay_setter_observer.dart';
 import 'setup_logging.dart';
 
 void main() async {
@@ -276,6 +277,11 @@ Future<void> _setupOSIntegration() async {
       await windowManager.show();
       await windowManager.focus();
     }));
+  }
+
+  if(Platform.isAndroid){
+    final binding = WidgetsFlutterBinding.ensureInitialized();
+    binding.addObserver(UIOverlaySetterObserver());
   }
 
   // Load the album image from assets and save it to the documents directory for use in Android Auto
